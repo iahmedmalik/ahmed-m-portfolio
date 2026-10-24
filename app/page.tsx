@@ -1,36 +1,291 @@
-import Sculpture from "../components/Sculpture";
 import Contact from "../components/Contact";
-import Guide from "../components/Guide";
-import OffClock from "../components/OffClock";
+import FilmPlayer from "../components/FilmPlayer";
+import Installer from "../components/Installer";
+import Taskbar from "../components/Taskbar";
+import { EMAIL, GITHUB, LINKEDIN, experience, projects, recognition, repoUrl, toolkit } from "../lib/content";
 
-const Arrow=()=> <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 16 16 4M5 4h11v11" stroke="currentColor" strokeWidth="1.5"/></svg>;
-const projects=[
- {name:"FlowPlan",category:"Planning that makes sense",title:"When one task slips,\nwhat moves with it?",text:"A project planner that shows dependencies, critical paths, and the room each task has to move. Built to make a complicated schedule easier to reason about.",image:"flowplan.png",alt:"FlowPlan task list and critical path diagram for an example website launch",demo:"https://flow-plan-five.vercel.app/",repo:"FlowPlan",doc:"docs/PRD.md",docLabel:"Read the product brief",tags:["Next.js","TypeScript","Vitest / Playwright"],detail:"The work behind it",detailText:"The repository connects the product brief to a test plan and recorded test results. The scheduling logic is kept separate from the interface, so the rules can be checked on their own.",tone:"flow"},
- {name:"QueueCare",category:"An everyday problem, reconsidered",title:"Less guessing.\nA clearer place in line.",text:"A clinic queue prototype with separate views for reception, the doctor, and patients. A useful place to practise translating a real workflow into requirements, roles, and software.",image:"queuecare.png",alt:"QueueCare clinic queue prototype homepage",demo:"https://queuecare-zeta.vercel.app/",repo:"QueueCare",doc:"docs/BRD.md",docLabel:"Read the business requirements",tags:["Next.js","Supabase","Role-based workflows"],detail:"Where the thinking lives",detailText:"The BRD, product brief, and testing documents explain the queue rules and permissions. This is a portfolio prototype; a real-clinic pilot is still a next step.",tone:"queue"},
- {name:"CommitteeKeeper",category:"A familiar system, made visible",title:"Who paid.\nWhose turn. What changed.",text:"A savings committee tracker for members, contributions, receipts, and an audit history. Designed around the questions an organiser needs to answer without digging through messages.",image:"committeekeeper.png",alt:"CommitteeKeeper savings committee tracking application",demo:"https://committeekeeper.vercel.app/",repo:"CommitteeKeeper",doc:"",docLabel:"Explore the documentation",tags:["TypeScript","Supabase / SQL","Audit history"],detail:"More than a payment screen",detailText:"The project documents its business rules, requirements, and test approach. It is a personal project, not a claim of running a real savings committee.",tone:"committee"},
-];
+const TitleBar = ({ title, id }: { title: string; id?: string }) => (
+  <div className="titlebar" id={id}>
+    <span className="titlebar-icon" aria-hidden="true" />
+    <span className="titlebar-text">{title}</span>
+    <span className="titlebar-btns" aria-hidden="true">
+      <i className="tb-min" />
+      <i className="tb-max" />
+      <i className="tb-close" />
+    </span>
+  </div>
+);
 
-export default function Home(){return <>
-  <a className="skip-link" href="#main">Skip to content</a>
-  <header className="site-header"><a className="wordmark" href="#" aria-label="Ahmed M., home"><span className="brand-mark" aria-hidden="true">a<span>m</span></span>Ahmed M<span className="orange-dot">.</span></a><nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a className="nav-github" href="https://github.com/ahmed-malikk" target="_blank" rel="noreferrer">GitHub</a><a href="#contact">Let’s talk <Arrow/></a></nav></header>
-  <main id="main">
-    <section className="hero" aria-labelledby="hero-title">
-      <div className="hero-copy"><h1 id="hero-title">A builder.<br/>A people person.<br/><span>Hi, I’m Ahmed.</span></h1><p>I’m Ahmed. I build web apps, work through the details, and keep people on the same page.</p><p className="hero-context">Software engineering & client / project coordination.<br/>Based in Lahore. Open to remote work.</p><div className="hero-actions"><a className="primary-link" href="#work">Explore my work <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14m-5-5 5 5 5-5" stroke="currentColor" strokeWidth="1.5" fill="none"/></svg></a><a className="text-link" href="mailto:ahmedmalikk494@gmail.com">Get in touch <Arrow/></a></div></div>
-      <Sculpture/>
-      <div className="hero-foot"><span>A little curious. Very hands-on. Always up for a good conversation.</span><span className="hero-foot-right">SCROLL TO THE WORK <svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M6 0v12M1 7l5 5 5-5" stroke="currentColor" fill="none"/></svg></span></div>
-    </section>
+const Banner = ({ pos = "50% 100%" }: { pos?: string }) => (
+  <div className="banner" aria-hidden="true">
+    <img src="/art/banner.png" alt="" width="120" height="420" style={{ objectPosition: pos }} />
+  </div>
+);
 
-    <section id="work" className="work-section" aria-labelledby="work-title"><div className="section-heading"><h2 id="work-title">A few things<br/>I’ve made<span className="orange-dot">.</span></h2><p>Small products. Specific problems.<br/>The code, decisions, and testing are all there to explore.</p></div>
-      {projects.map((p,i)=><article className={`project project-${p.tone}`} key={p.name}><div className="project-visual"><div className="project-image-wrap"><div className="window-bar"><span/><span/><span/><span className="window-address">{new URL(p.demo).hostname}</span></div><img src={`/projects/${p.image}`} alt={p.alt} width="1440" height="812" loading="lazy"/></div><div className="visual-caption"><span>{p.name}</span><span>Personal project / {i===0?"Planning":i===1?"Clinic workflow":"Record keeping"}</span></div></div><div className="project-copy"><div className="project-name">{p.name}<span>{p.category}</span></div><h3>{p.title.split("\n").map((t,j)=><span key={j}>{t}<br/></span>)}</h3><p>{p.text}</p><ul className="tags" aria-label={`${p.name} technologies`}>{p.tags.map(t=><li key={t}>{t}</li>)}</ul><div className="project-links"><a className="project-demo" href={p.demo} target="_blank" rel="noreferrer">Try the demo <Arrow/></a><a href={`https://github.com/ahmed-malikk/${p.repo}`} target="_blank" rel="noreferrer">View code <Arrow/></a></div><details><summary>{p.detail}<span aria-hidden="true">+</span></summary><p>{p.detailText}</p><a href={`https://github.com/ahmed-malikk/${p.repo}${p.doc?`/blob/main/${p.doc}`:""}`} target="_blank" rel="noreferrer">{p.docLabel} <Arrow/></a></details></div></article>)}
-      <div className="qa-note"><div className="qa-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="m12 25 8 8 17-19" stroke="currentColor" strokeWidth="3"/><circle cx="24" cy="24" r="21" stroke="currentColor"/></svg></div><div><h3>The checking matters, too.</h3><p>My SauceDemo manual QA sample includes test cases, execution records, and defect reports. Four login cases are recorded as executed; the wider scope is marked as planned.</p></div><a href="https://github.com/ahmed-malikk/saucedemo-qa-testing" target="_blank" rel="noreferrer">Explore the QA sample <Arrow/></a></div>
-    </section>
+const Ext = () => (
+  <svg className="ext" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+    <path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" strokeWidth="1.6" />
+  </svg>
+);
 
-    <section id="about" className="about-section" aria-labelledby="about-title"><div className="about-intro"><h2 id="about-title">Good work needs<br/>good follow-through<span className="orange-dot">.</span></h2><p>I’ve worked with prospects, customers, and project teams. That experience shapes how I build: ask the useful question, make the next step clear, and keep the details in order.</p><p>I like the point where a conversation becomes a requirement, a requirement becomes working software, and a test helps check the result.</p><a className="text-link" href="https://www.linkedin.com/in/ahmedmalik494/" target="_blank" rel="noreferrer">More about my experience <Arrow/></a><div className="toolkit"><h3>On my desk</h3><p>TypeScript · Next.js · SQL · Supabase<br/>Playwright · Vitest · Jira · ClickUp · HubSpot</p></div></div><div className="experience"><h3>The path so far</h3><ol><li><div><h4>Immigration Consultant</h4><span>HOF Global</span></div><time>Dec 2025 — Aug 2026</time><p>Client communication, CRM records, document follow-up, and case handoffs.</p></li><li><div><h4>Sales Development Representative</h4><span>ibex. Pakistan</span></div><time>Dec 2024 — 2025</time><p>Prospect conversations, lead qualification, follow-up activity, and handoff notes.</p></li><li><div><h4>Project Manager Intern</h4><span>iTechGemini</span></div><time>May — Aug 2024</time><p>Jira and ClickUp tracking, sprint records, meeting actions, and status updates.</p></li><li><div><h4>Sales Development Representative</h4><span>LiveAdmins / CallStorm</span></div><time>2023 — 2024</time><p>Prospect research, discovery calls, scheduling, and organized client records.</p></li></ol></div></section>
+export default function Home() {
+  return (
+    <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <main id="main" className="desktop">
+        {/* 1. Welcome */}
+        <section className="dialog dialog-welcome" id="welcome" aria-labelledby="welcome-title">
+          <TitleBar title="Ahmed M. Setup" />
+          <div className="dialog-body">
+            <Banner pos="50% 100%" />
+            <div className="welcome-grid">
+              <div className="welcome-copy">
+                <h1 id="welcome-title">I'm Ahmed, a software engineer in Lahore who started out on the client side.</h1>
+                <p className="lede">
+                  I build small web apps around one real question each, like a clinic's "how much longer?" or a kameti's "who paid?". I write the
+                  requirements and the tests as well as the code. Before this I worked in sales, immigration cases and project tracking.
+                </p>
+                <p className="meta">Software engineering · Client and project coordination · Open to remote work</p>
+              </div>
+              <Installer names={projects.map((p) => ({ name: p.name, file: p.file }))} />
+            </div>
+          </div>
+          <div className="button-bar">
+            <span className="step-count">Step 1 of 4</span>
+            <span className="btn" aria-disabled="true">
+              &lt; Back
+            </span>
+            <a className="btn btn-default" href="#components">
+              Next &gt;
+            </a>
+            <a className="btn" href={`mailto:${EMAIL}`}>
+              Email Ahmed
+            </a>
+          </div>
+        </section>
 
-    <section id="milestones" className="milestones"><h2>A few proud moments<span className="orange-dot">.</span></h2><div className="achievement-list"><article><span className="achievement-symbol" aria-hidden="true">{`{ }`}</span><div><h3>PF & OOP Star Performer</h3><p>Recognition in Programming Fundamentals and Object-Oriented Programming.</p></div></article><article><svg className="achievement-symbol" viewBox="0 0 50 50" fill="none" aria-hidden="true"><path d="m25 4 6 13 14 2-10 10 3 15-13-7-13 7 3-15L5 19l14-2Z" stroke="currentColor" strokeWidth="1.5"/></svg><div><h3>Merit-based full scholarship</h3><p>Aitchison College, Lahore · Exceptional High Achiever Award.</p></div></article></div></section>
-    <OffClock/>
-    <section id="contact" className="contact-section" aria-labelledby="contact-title"><div><h2 id="contact-title">Something in mind?<br/>Let’s talk<span className="orange-dot">.</span></h2><p>A role, a project, or a useful conversation.<br/>I’d be glad to hear from you.</p></div><Contact/></section>
-  </main>
-  <Guide/>
-  <footer><a className="footer-name" href="#">Ahmed M.</a><span>Lahore, Pakistan · Built with Next.js & a little perspective.</span><div><a href="https://github.com/ahmed-malikk" target="_blank" rel="noreferrer">GitHub <Arrow/></a><a href="https://www.linkedin.com/in/ahmedmalik494/" target="_blank" rel="noreferrer">LinkedIn <Arrow/></a><a href="#main">Back to top ↑</a></div></footer>
-</>;}
+        {/* 2. Select components */}
+        <section className="dialog" id="components" aria-labelledby="components-title">
+          <TitleBar title="Ahmed M. Setup · Select Components" />
+          <div className="dialog-body">
+            <Banner pos="50% 28%" />
+            <div className="components">
+              <h2 id="components-title">Four projects, each with its code, its documents and its tests.</h2>
+              <p className="lede">Every one starts with a question somebody actually asked. Pick one to jump to its demo film, or keep scrolling to see them all.</p>
+              <div className="listview" role="table" aria-label="Projects">
+                <div className="lv-head" role="row">
+                  <span role="columnheader">Component</span>
+                  <span role="columnheader">The question it answers</span>
+                  <span role="columnheader">Status</span>
+                </div>
+                {projects.map((p) => (
+                  <a className="lv-row" role="row" key={p.id} href={`#${p.id}`}>
+                    <span role="cell" className="lv-name">
+                      <span className="check" aria-hidden="true" />
+                      {p.name}
+                    </span>
+                    <span role="cell" className="lv-q">
+                      {p.question}
+                    </span>
+                    <span role="cell" className={`lv-status ${p.status === "Live" ? "is-live" : "is-proto"}`}>
+                      {p.status}
+                    </span>
+                  </a>
+                ))}
+              </div>
+              <p className="hint">Plus an optional manual QA sample. Each has a demo film of about half a minute, made from the real app and its demo data.</p>
+            </div>
+          </div>
+          <div className="button-bar">
+            <span className="step-count">Step 2 of 4</span>
+            <a className="btn" href="#welcome">
+              &lt; Back
+            </a>
+            <a className="btn btn-default" href="#flowplan">
+              Next &gt;
+            </a>
+          </div>
+        </section>
+
+        {/* 3. One dialog per project */}
+        {projects.map((p, i) => (
+          <section className="dialog dialog-project" id={p.id} key={p.id} aria-labelledby={`${p.id}-title`}>
+            <TitleBar title={`${p.name} · Component ${i + 1} of ${projects.length}`} />
+            <div className="dialog-body project-body">
+              <FilmPlayer src={`/videos/${p.name}.mp4`} poster={`/videos/${p.name}-poster.jpg`} title={`${p.name} demo film`} length={p.film} />
+              <div className="project-copy">
+                <div className="project-head">
+                  <h2 id={`${p.id}-title`}>{p.name}</h2>
+                  <span className={`chip ${p.status === "Live" ? "is-live" : "is-proto"}`}>{p.statusNote}</span>
+                </div>
+                <p className="project-q">{p.question}</p>
+                <p className="project-line">{p.line}</p>
+                <fieldset className="groupbox">
+                  <legend>What I did</legend>
+                  <p>{p.did}</p>
+                </fieldset>
+                <dl className="tests">
+                  {p.tests.map((t) => (
+                    <div key={t.label}>
+                      <dt>{t.n}</dt>
+                      <dd>{t.label}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="stack">
+                  <span>Built with</span> {p.stack.join(" · ")}
+                </p>
+              </div>
+            </div>
+            <div className="button-bar">
+              {p.demo ? (
+                <a className="btn btn-default" href={p.demo} target="_blank" rel="noreferrer">
+                  Try the demo <Ext />
+                </a>
+              ) : (
+                <span className="btn" aria-disabled="true" title="Not deployed yet">
+                  No live demo yet
+                </span>
+              )}
+              <a className={`btn${p.demo ? "" : " btn-default"}`} href={repoUrl(p.repo)} target="_blank" rel="noreferrer">
+                Source code <Ext />
+              </a>
+              {p.docs.map((d) => (
+                <a className="btn btn-doc" key={d.path} href={repoUrl(p.repo, d.path)} target="_blank" rel="noreferrer">
+                  {d.label} <Ext />
+                </a>
+              ))}
+            </div>
+          </section>
+        ))}
+
+        {/* QA sample */}
+        <section className="dialog dialog-small" id="qa" aria-labelledby="qa-title">
+          <TitleBar title="Optional Component · Manual QA" />
+          <div className="dialog-body qa-body">
+            <svg className="qa-icon" viewBox="0 0 32 32" aria-hidden="true">
+              <rect x="5" y="3" width="22" height="26" fill="#fffaf0" stroke="#2a221b" strokeWidth="2" />
+              <rect x="11" y="1" width="10" height="5" fill="#c9bfab" stroke="#2a221b" strokeWidth="2" />
+              <path d="m9 13 3 3 5-6M9 22h14M19 14h4" stroke="#2a221b" strokeWidth="2" fill="none" />
+            </svg>
+            <div>
+              <h2 id="qa-title">SauceDemo manual QA sample</h2>
+              <p>
+                Test cases, execution records and defect reports for a public demo shop. Four login cases are recorded as executed; the wider scope is
+                written down and marked as planned, not passed.
+              </p>
+            </div>
+            <a className="btn" href={repoUrl("saucedemo-qa-testing")} target="_blank" rel="noreferrer">
+              Read the QA sample <Ext />
+            </a>
+          </div>
+        </section>
+
+        {/* 4. Read me */}
+        <section className="dialog" id="readme" aria-labelledby="readme-title">
+          <TitleBar title="Ahmed M. Setup · Read Me" />
+          <div className="dialog-body">
+            <Banner pos="50% 62%" />
+            <div className="readme">
+              <h2 id="readme-title">Most of my work so far has been with clients.</h2>
+              <div className="readme-cols">
+                <div className="readme-text">
+                  <p>
+                    Sales calls, immigration cases, sprint boards. Working with prospects, customers and project teams taught me to ask the useful
+                    question, make the next step clear and keep the details in order. I build the same way.
+                  </p>
+                  <p>
+                    The part I like most is when a conversation becomes a requirement, the requirement becomes working software, and a test proves the
+                    result. Off the clock, it's football.
+                  </p>
+                  <fieldset className="groupbox">
+                    <legend>On my desk</legend>
+                    <p>{toolkit.join(" · ")}</p>
+                  </fieldset>
+                  <fieldset className="groupbox">
+                    <legend>Education and recognition</legend>
+                    <ul className="plain">
+                      <li>Computer Science coursework at UET Lahore; now studying at Virtual University</li>
+                      {recognition.map((r) => (
+                        <li key={r.title}>
+                          <b>{r.title}</b>, {r.note}
+                        </li>
+                      ))}
+                    </ul>
+                  </fieldset>
+                </div>
+                <div className="sunken history" role="region" aria-label="Work history" tabIndex={0}>
+                  <table>
+                    <caption className="sr-only">Work history</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Role</th>
+                        <th scope="col">Dates</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {experience.map((e) => (
+                        <tr key={e.role + e.org}>
+                          <td>
+                            <b>{e.role}</b>
+                            <span className="org" data-dates={e.dates}>{e.org}</span>
+                            <span className="note">{e.note}</span>
+                          </td>
+                          <td className="dates">{e.dates}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="button-bar">
+            <span className="step-count">Step 3 of 4</span>
+            <a className="btn" href="#components">
+              &lt; Back
+            </a>
+            <a className="btn btn-default" href="#contact">
+              Next &gt;
+            </a>
+            <a className="btn" href={LINKEDIN} target="_blank" rel="noreferrer">
+              LinkedIn <Ext />
+            </a>
+          </div>
+        </section>
+
+        {/* 5. Finish */}
+        <section className="dialog dialog-finish" id="contact" aria-labelledby="contact-title">
+          <TitleBar title="Ahmed M. Setup · Finish" />
+          <div className="dialog-body">
+            <Banner pos="50% 100%" />
+            <div className="finish">
+              <h2 id="contact-title">Setup is complete. Let's talk.</h2>
+              <p className="lede">A role, a project, or a useful conversation. I'd be glad to hear from you.</p>
+              <Contact email={EMAIL} github={GITHUB} linkedin={LINKEDIN} />
+            </div>
+          </div>
+          <div className="button-bar">
+            <span className="step-count">Step 4 of 4</span>
+            <a className="btn" href="#readme">
+              &lt; Back
+            </a>
+            <a className="btn btn-default" href={`mailto:${EMAIL}`}>
+              Finish: send an email
+            </a>
+          </div>
+        </section>
+
+        <p className="colophon">
+          Ahmed M. · Lahore, Pakistan · Built with Next.js. The banner art and the demo films were made for this site.{" "}
+          <a href={`${GITHUB}/ahmed-portfolio`} target="_blank" rel="noreferrer">
+            This site's source
+          </a>
+        </p>
+      </main>
+      <Taskbar />
+    </>
+  );
+}
