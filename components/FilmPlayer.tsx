@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 // Plays a project film while it is on screen, muted and looping. Reduced motion starts paused on the poster.
 export default function FilmPlayer({ src, poster, title, length }: { src: string; poster: string; title: string; length: string }) {
   const ref = useRef<HTMLVideoElement>(null);
+  const manualPlayback = useRef(false);
   const [playing, setPlaying] = useState(false);
   const [userPaused, setUserPaused] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -12,32 +13,42 @@ export default function FilmPlayer({ src, poster, title, length }: { src: string
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    let reduce = false;
-    try {
-      reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    } catch {}
-    if (reduce) {
-      setUserPaused(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting && !userPaused) v.play().catch(() => setPlaying(false));
-        else v.pause();
-      },
-      { threshold: 0.45 },
-    );
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    const syncPlayback = () => {
+      if (visible && !document.hidden && !userPaused && (!preference.matches || manualPlayback.current)) {
+        v.play().catch(() => setPlaying(false));
+      } else {
+        v.pause();
+      }
+    };
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      syncPlayback();
+    }, { threshold: 0.45 });
     io.observe(v);
-    return () => io.disconnect();
+    document.addEventListener("visibilitychange", syncPlayback);
+    const preferenceChanged = () => {
+      manualPlayback.current = false;
+      syncPlayback();
+    };
+    preference.addEventListener("change", preferenceChanged);
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", syncPlayback);
+      preference.removeEventListener("change", preferenceChanged);
+    };
   }, [userPaused]);
 
   const toggle = () => {
     const v = ref.current;
     if (!v) return;
     if (v.paused) {
+      manualPlayback.current = true;
       setUserPaused(false);
       v.play().catch(() => setPlaying(false));
     } else {
+      manualPlayback.current = false;
       setUserPaused(true);
       v.pause();
     }
