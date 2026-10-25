@@ -147,6 +147,8 @@ export const experience = [
 ];
 
 export const recognition = [
+  { title: "SQL (Basic), SQL (Intermediate) & SQL (Advanced)", note: "HackerRank certifications" },
+  { title: "Project Management Training", note: "Project Management Institute (PMI)" },
   { title: "PF & OOP Star Performer", note: "Programming Fundamentals and Object-Oriented Programming" },
   { title: "Merit-based full scholarship", note: "Aitchison College, Lahore" },
   { title: "Exceptional High Achiever Award", note: "Aitchison College, Lahore" },
