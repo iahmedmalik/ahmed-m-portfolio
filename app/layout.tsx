@@ -1,30 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource-variable/archivo/wdth.css";
-import "@fontsource-variable/pixelify-sans";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ahmed M. Setup",
-  description: "Ahmed M. builds small web apps that answer one stubborn question each: FlowPlan, QueueCare, CommitteeKeeper and PulseMetrics, with demo films, code, documents and tests.",
+  title: "Ahmed M. — Software Engineer & Project Coordinator",
+  description: "Ahmed M., software engineer in Lahore. TypeScript and Next.js development, software QA, automated testing, requirements analysis and project coordination. Explore projects, demo films and test evidence.",
   robots: { index: true, follow: true },
 };
 
-export const viewport: Viewport = { themeColor: "#3a2531" };
-
-const CONTRACT = `<!--
-THESIS: The portfolio as a warm shareware setup wizard: a strict running order of dialogs (Welcome, Projects, Read Me, Finish) instead of the category's hero + card grid.
-OWN-WORLD: Warm putty dialog chrome with hard bevels on a dithered plum-brown desktop; burnt-orange title bars; block-stepped orange progress; a dithered pixel banner of Lahore at dusk down the left of each dialog; Archivo for reading, Pixelify Sans for chrome; a taskbar as navigation.
-STORY: A recruiter sees what Ahmed builds in one sentence, watches each project's 30 s film, checks real tests and documents, reads his client-facing history, and emails him.
-FIRST VIEWPORT: Full-width Setup dialog: banner left, H1 claim centre, live install panel right copying the four projects' real source files; Back / Next / Email Ahmed on the button bar; taskbar fixed at the bottom.
-FORM: Shareware installer (user-chosen challenger, adopted over the assigned match-day programme). Seed 4c548afb.
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
--->`;
+export const viewport: Viewport = { themeColor: "#1c1e1b" };
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>
-        <div hidden dangerouslySetInnerHTML={{ __html: CONTRACT }} />
+        <div hidden dangerouslySetInnerHTML={{__html: "<!-- THESIS: Ahmed’s work as a film studio and project gallery. OWN-WORLD: charcoal, warm white, chartreuse, Barlow Condensed and Chivo; thin seams and real app imagery. STORY: watch a film, inspect a project, review evidence, contact Ahmed. FIRST VIEWPORT: direct two-line headline, introduction and a side-positioned illustrated avatar in an interactive checkerboard room, then four independent project films and descriptions. FORM: user-selected film studio with restored full project showcases and Three.js depth; seed 50121416 overridden by explicit user preference. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->"}} />
         {children}
       </body>
     </html>
