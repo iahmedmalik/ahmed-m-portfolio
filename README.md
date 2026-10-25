@@ -2,7 +2,19 @@
 
 A personal portfolio for software engineering, software QA and project coordination roles. Four project films sit alongside requirements, implementation notes, test evidence and source links. An original interactive 3D character and checkerboard room introduce the work.
 
-[GitHub](https://github.com/iahmedmalik) · [LinkedIn](https://www.linkedin.com/in/ahmedmalik494/) · [Email](mailto:ahmedmalikk494@gmail.com)
+[Live portfolio](https://ahmed-m-portfolio.vercel.app/) · [GitHub](https://github.com/iahmedmalik) · [LinkedIn](https://www.linkedin.com/in/ahmedmalik494/) · [Email](mailto:ahmedmalikk494@gmail.com)
+
+## The studio
+
+[![Animated hero: Ahmed’s illustrated character follows the cursor inside a checkerboard room](public/readme/hero-preview.gif)](https://ahmed-m-portfolio.vercel.app/)
+
+A recording of the live site, including the original 3D avatar and pointer-responsive checkerboard and contour artwork. Open the portfolio to move the cursor yourself, pause motion, or reset the view.
+
+### The illustrated avatar
+
+[![Animated full-body avatar with glasses, showing the head and eyes following the cursor](public/readme/avatar-preview.gif)](https://ahmed-m-portfolio.vercel.app/)
+
+Built from original procedural geometry in [create-avatar.ts](lib/create-avatar.ts), with the interactions in [HeroScene.tsx](components/HeroScene.tsx). This is a stylized character, not a photographic likeness. The README previews are looping GIFs; the live version responds to your cursor. Reduced-motion preferences pause the live scene by default.
 
 ## Run locally
 
