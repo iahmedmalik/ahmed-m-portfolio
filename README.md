@@ -1,52 +1,54 @@
-# A little corner of the internet
+# Ahmed M. — Portfolio
 
-Ahmed M.’s portfolio. A builder, a people person, and a football enthusiast in Lahore.
+A personal portfolio for software engineering, software QA and project coordination roles. Four project films sit alongside requirements, implementation notes, test evidence and source links. An original interactive 3D character and checkerboard room introduce the work.
 
-An original miniature studio sets the scene: say hello to the desk avatar, change the lighting, or drag to look around. Pip—the small orange companion—can answer questions about the work. Then get straight to the projects, code, requirements, testing, and experience.
+[GitHub](https://github.com/iahmedmalik) · [LinkedIn](https://www.linkedin.com/in/ahmedmalik494/) · [Email](mailto:ahmedmalikk494@gmail.com)
 
-## Have a look locally
+## Run locally
+
+Use Node.js 24 LTS and npm. No API keys or environment variables are required.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:3107. Node.js 20.9+ required. No API keys or environment variables.
+Open http://127.0.0.1:3107.
 
 ```sh
-npm run typecheck
+npm test
 npm run build
 npm run start
 ```
 
-This repository is intentionally **not deployed**. There is no deployment workflow.
+`npm run build` includes TypeScript checking. Run `npm run typecheck` separately after Next.js has generated its route types.
 
-## What’s inside
+## Deploy on Vercel
 
-- **Miniature 3D studio:** a hand-built Three.js scene with a stylized character, desk, window, plant and Pip. Drag, wave, evening light, reset. This is an illustrated character, not a photographic likeness.
-- **Pip:** a local, curated portfolio guide. Free-text matching and quick questions cover projects, experience, QA, skills, education and contact. Unknown questions get an honest fallback. No LLM, chat service, stored messages, tracking or API cost.
-- **Project stories:** real screenshots and direct demo, code and documentation links for FlowPlan, QueueCare and CommitteeKeeper, plus a manual QA sample.
-- **Personal details:** football interaction, experience and recognition supplied by Ahmed’s representative and source CVs.
-- **Accessible basics:** semantic navigation, keyboard controls, visible focus, responsive layouts, reduced-motion support and a WebGL fallback.
+Import this repository as a Next.js project. Use the repository root as the Root Directory, Node.js 24.x, `npm ci` as the install command, and `npm run build` as the build command. Leave Output Directory at the framework default. There are no secrets, database services or external font downloads to configure.
+
+All required fonts, project screenshots and MP4 films are committed under `public/`. The hero loads Three.js on the client, pauses offscreen, respects reduced motion and provides a static fallback when WebGL is unavailable. Content and contact links remain usable without the 3D scene.
 
 ## Where to edit
 
 | File | Purpose |
 | --- | --- |
-| `app/page.tsx` | Projects, experience, recognition, contact links |
-| `components/Sculpture.tsx` | Original 3D scene and interactions |
-| `components/Guide.tsx` | Pip’s conversation interface |
-| `lib/ahmed.ts` | Curated answers and question matching |
-| `components/OffClock.tsx` | Football interaction |
-| `app/globals.css` | Colors, type, layout and responsive rules |
-| `DESIGN.md` | Design decisions |
+| `lib/content.ts` | Projects, skills, test evidence, experience and profile links |
+| `app/page.tsx` | Page structure and alternating project showcases |
+| `app/globals.css` | Self-hosted fonts, colours, artwork and responsive layout |
+| `components/HeroScene.tsx` | Checkerboard room, cursor response and motion controls |
+| `lib/create-avatar.ts` | Original procedural character geometry |
+| `components/FilmPlayer.tsx` | Accessible project films with playback controls |
+| `components/ExperienceSelector.tsx` | Keyboard-accessible company selector |
+| `components/QAShowcase.tsx` | Manual testing sample and execution evidence |
+| `components/SectionDepth.tsx` | Decorative perspective studies |
+| `components/Contact.tsx` | Profile links and copy-email control |
+| `tests/content.test.mjs` | Required links, media files and evidence checks |
 
-Next.js App Router · TypeScript · React · Three.js. Fonts are bundled locally through Fontsource (Space Grotesk and DM Sans).
+## Project films
 
-## Content and sources
+The four 1080p motion films were produced in a separate Remotion workspace. FlowPlan and QueueCare use demo-site screenshots; CommitteeKeeper and PulseMetrics use local runs with demo data. Film diagrams reflect each app’s own design and data. PulseMetrics is a local prototype, as labelled on the site.
 
-Projects are personal portfolio work, not claims of commercial deployments. There are no invented clients, metrics, degrees or certificates. No credential images are included. PF/OOP recognition and football interests were supplied directly; the scholarship and Aitchison award appear in the source CVs. Check issuer wording and evidence before adding certification claims.
+## Content and attribution
 
-Project screenshots were captured from Ahmed’s own public demos. No external portfolio code or art was copied. Inspiration research: [Emma Bostian’s directory](https://github.com/emmabostian/developer-portfolios), [Bruno Simon’s interactive world](https://bruno-simon.com/), and [Brittany Chiang’s readable project stories](https://brittanychiang.com/). The studio composition, avatar and Pip are original code-built assets.
-
-[GitHub](https://github.com/ahmed-malikk) · [LinkedIn](https://www.linkedin.com/in/ahmedmalik494/) · [Email](mailto:ahmedmalikk494@gmail.com)
+Projects are personal portfolio work. The page links directly to source, requirements and test reports so visitors can inspect the evidence. Education is described as coursework and current study; no completed degree or unverified certification is claimed. The character, checkerboard scene, contour artwork and football illustration are original code-built artwork. Self-hosted Chivo and Barlow Condensed fonts are distributed under the SIL Open Font License; notices are included with the font assets.
