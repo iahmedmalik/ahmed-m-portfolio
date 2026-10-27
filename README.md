@@ -63,4 +63,4 @@ The four 1080p motion films were produced in a separate Remotion workspace. Flow
 
 ## Content and attribution
 
-Projects are personal portfolio work. The page links directly to source, requirements and test reports so visitors can inspect the evidence. Education is described as coursework and current study; no completed degree or unverified certification is claimed. The character, checkerboard scene, contour artwork and football illustration are original code-built artwork. Self-hosted Chivo and Barlow Condensed fonts are distributed under the SIL Open Font License; notices are included with the font assets.
+Projects are personal portfolio work. The page links directly to source, requirements and test reports so visitors can inspect the evidence. Work history and education follow Ahmed's CV (Computer Science graduate, UET Lahore); no unverified certification is claimed. The character, checkerboard scene, contour artwork and football illustration are original code-built artwork. Self-hosted Chivo and Barlow Condensed fonts are distributed under the SIL Open Font License; notices are included with the font assets.

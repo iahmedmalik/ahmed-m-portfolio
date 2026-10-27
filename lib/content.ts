@@ -98,8 +98,8 @@ export const projects: Project[] = [
     id: "pulsemetrics",
     skills: ["Product analytics", "A/B testing", "REST API testing", "Database integration testing"],
     name: "PulseMetrics",
-    status: "Prototype",
-    statusNote: "Built and tested locally, not deployed yet",
+    status: "Live",
+    statusNote: "Live, free sign-up",
     question: "Did version B really win?",
     line: "Product analytics for small apps: funnels, daily active browsers, and A/B tests that give a p-value and a verdict in plain English.",
     did: "I wrote the privacy rule first (no cookies, no page addresses, no free-text field anywhere), put the statistics in one shared package, and tested the API against a real Postgres.",
@@ -109,6 +109,7 @@ export const projects: Project[] = [
       { n: "155", label: "API and database tests passed" },
       { n: "199", label: "browser test runs passed" },
     ],
+    demo: "https://pulsemetrics-delta.vercel.app/",
     repo: "PulseMetrics",
     docs: [
       { label: "Product brief (PRD)", path: "docs/PRD.md" },
@@ -120,36 +121,45 @@ export const projects: Project[] = [
 ];
 
 export const experience = [
-  { role: "Immigration Consultant · Client Coordination", org: "HOF Global", dates: "Dec 2025 – Aug 2026", note: "Client enquiries, document follow-ups and organised case handoffs.", details: [
-    "Handled client enquiries and clarified the information or documents needed for the next step in a case.",
-    "Maintained CRM records covering client conversations, document status and outstanding follow-up actions.",
-    "Coordinated document follow-ups so case information stayed organised and ready for review.",
-    "Prepared clear handoff context, helping the next person pick up a case without losing the conversation history."
-  ], focus: ["Client communication", "CRM records", "Document coordination", "Case handoffs"] },
-  { role: "Sales Development Representative · Lead Qualification", org: "ibex. Pakistan", dates: "Dec 2024 – 2025", note: "Prospect conversations, lead qualification and consistent follow-through.", details: [
-    "Spoke with prospective customers to understand their needs and assess whether a lead was suitable for the next sales step.",
-    "Recorded conversation outcomes and relevant customer context for follow-up.",
-    "Kept next actions clear through follow-up conversations and organised sales handoff notes.",
-    "Built practical experience in asking focused questions, explaining information clearly and handling customer conversations."
-  ], focus: ["Lead qualification", "Discovery conversations", "Follow-up", "Sales handoffs"] },
-  { role: "Project Management Intern", org: "iTechGemini", dates: "May – Aug 2024", note: "Sprint coordination, project records and action tracking.", details: [
-    "Supported task and sprint tracking in Jira and ClickUp, keeping work records organised for the project team.",
-    "Maintained sprint notes and project records so progress and next steps were easy to review.",
-    "Captured meeting actions and followed their status through subsequent updates.",
-    "Helped prepare status updates that kept project discussions connected to tracked work."
-  ], focus: ["Jira", "ClickUp", "Sprint records", "Meeting actions", "Status reporting"] },
-  { role: "Sales Development Representative · Client Outreach", org: "LiveAdmins / CallStorm", dates: "2023 – 2024", note: "Prospect research, outreach support and client record management.", details: [
-    "Researched prospects to prepare for more relevant outreach and discovery conversations.",
-    "Supported discovery calls and recorded useful context from prospect discussions.",
-    "Scheduled follow-ups and maintained client records to support continuity between conversations.",
-    "Developed a foundation in client-facing communication, preparation and consistent follow-through."
-  ], focus: ["Prospect research", "Client outreach", "Scheduling", "Client records"] },
+  { role: "Program Consultant (Client Coordination)", org: "HOF Global", dates: "May 2026 – Oct 2026", note: "Client coordination, HubSpot CRM records and document handoffs with case-processing teams.", details: [
+    "Explained service options, documentation requirements and next steps so clients understood the process and any outstanding actions.",
+    "Maintained client profiles, case notes, follow-up activities and progress updates in HubSpot CRM.",
+    "Coordinated document collection and handoffs with case-processing teams, following up on missing information.",
+    "Communicated client requirements and case updates between clients and internal colleagues.",
+    "Supported onboarding and continuity through organised records, clear expectations and timely follow-through."
+  ], focus: ["Client communication", "HubSpot CRM", "Document coordination", "Case handoffs"] },
+  { role: "Team Operations Associate (SME)", org: "ibex. Pakistan", dates: "Dec 2024 – May 2026", note: "Promoted to Subject Matter Expert (Operations) on US voice accounts for Walmart and FedEx.", details: [
+    "Promoted from Customer Support Representative to Subject Matter Expert (Operations), supporting team operations, issue resolution and service quality on US voice accounts for Walmart and FedEx.",
+    "Coordinated real-time operations, including schedule requests, break-related issues and changing floor requirements.",
+    "Handled complex customer escalations and reviewed operational reports to help the team lead monitor performance and address recurring issues.",
+    "Trained new customer service representatives and coached agents on quality assurance feedback, call handling and process adherence.",
+    "Maintained accurate customer records and interaction histories in CRM and ticketing systems to support efficient follow-ups.",
+    "Balanced competing priorities in a fast-paced environment while maintaining service quality and attention to detail.",
+    "Recognised as a top performer during peak season."
+  ], focus: ["Team operations", "Escalations", "Training & QA coaching", "CRM & ticketing"] },
+  { role: "Project Manager Intern", org: "iTechGemini Pvt Ltd", dates: "Oct 2024 – Dec 2024", note: "Jira and ClickUp boards, sprint ceremonies, status updates and project records.", details: [
+    "Maintained Jira and ClickUp task boards, keeping task status and sprint records current for the delivery team.",
+    "Supported stand-ups, sprint planning and retrospectives by recording meeting actions, blockers and follow-up items.",
+    "Prepared project status updates covering progress, outstanding tasks and items requiring attention.",
+    "Maintained project timelines, risk logs, change records and supporting project documents.",
+    "Recorded decisions and tracked agreed next steps to support communication between project participants."
+  ], focus: ["Jira", "ClickUp", "Sprint ceremonies", "Status reporting", "Risk logs"] },
+  { role: "Outreach Coordinator and Sales Operations", org: "LiveAdmins LLC", dates: "Sep 2023 – Oct 2024", note: "Prospect research, CRM records and discovery meetings with account colleagues.", details: [
+    "Researched and qualified prospects using LinkedIn Sales Navigator and Apollo.",
+    "Kept CRM records, account information, lead stages and follow-up schedules organised.",
+    "Coordinated discovery meetings and follow-up communication between prospects and account colleagues, capturing needs and notes for informed handoffs.",
+    "Worked with sales and account colleagues to keep outreach activity and client communication consistent."
+  ], focus: ["Prospect research", "Sales Navigator & Apollo", "CRM records", "Discovery meetings"] },
+  { role: "Sales Development Representative (Remote)", org: "CallStorm", dates: "May 2023 – Sep 2023", note: "Remote outreach to US-based prospects and organised CRM follow-ups.", details: [
+    "Contacted US-based prospects remotely to introduce services, understand their needs and arrange discovery conversations.",
+    "Recorded conversations, requirements and next steps in CRM records, keeping call schedules and follow-up calendars organised.",
+    "Maintained lead information to support handoffs and ongoing client conversations while working fully remotely."
+  ], focus: ["US prospect outreach", "Discovery calls", "CRM records", "Remote work"] },
 ];
 
 export const recognition = [
   { title: "SQL (Basic), SQL (Intermediate) & SQL (Advanced)", note: "HackerRank certifications" },
   { title: "Project Management Training", note: "Project Management Institute (PMI)" },
-  { title: "PF & OOP Star Performer", note: "Programming Fundamentals and Object-Oriented Programming" },
   { title: "Merit-based full scholarship", note: "Aitchison College, Lahore" },
   { title: "Exceptional High Achiever Award", note: "Aitchison College, Lahore" },
 ];
