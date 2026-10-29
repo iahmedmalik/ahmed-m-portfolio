@@ -1,0 +1,1 @@
+Screenshot of the Zindex demo (a local run with demo data; the demo shop recoloured for the film), captured for the project film. Local source: private/zindex/film/public/shots/lap-today.png

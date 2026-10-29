@@ -1,6 +1,6 @@
 # Ahmed M. — Portfolio
 
-A personal portfolio for software engineering, software QA and project coordination roles. Four project films sit alongside requirements, implementation notes, test evidence and source links. An original interactive 3D character and checkerboard room introduce the work.
+A personal portfolio for software engineering, software QA and project coordination roles. Five project films sit alongside requirements, implementation notes, test evidence and source links. An original interactive 3D character and checkerboard room introduce the work.
 
 [Live portfolio](https://ahmed-m-portfolio.vercel.app/) · [GitHub](https://github.com/iahmedmalik) · [LinkedIn](https://www.linkedin.com/in/ahmedmalik494/) · [Email](mailto:ahmedmalikk494@gmail.com)
 
@@ -59,7 +59,9 @@ All required fonts, project screenshots and MP4 films are committed under `publi
 
 ## Project films
 
-The four 1080p motion films were produced in a separate Remotion workspace. FlowPlan and QueueCare use demo-site screenshots; CommitteeKeeper and PulseMetrics use local runs with demo data. Film diagrams reflect each app’s own design and data. PulseMetrics is a local prototype, as labelled on the site.
+The five 1080p motion films were produced in separate Remotion workspaces. FlowPlan and QueueCare use demo-site screenshots; CommitteeKeeper, PulseMetrics and Zindex use local runs with demo data (Zindex at 60 frames a second). Film diagrams reflect each app’s own design and data.
+
+Every project is live with a demo to try, newest first: [Zindex](https://zindex-seven.vercel.app/) (Try the demo, no sign-up) · [PulseMetrics](https://pulsemetrics-delta.vercel.app/) (free sign-up) · [CommitteeKeeper](https://committeekeeper.vercel.app/) · [QueueCare](https://queuecare-zeta.vercel.app/) (public demo accounts) · [FlowPlan](https://flow-plan-five.vercel.app/) (no sign-up).
 
 ## Content and attribution
 

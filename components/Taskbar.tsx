@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const TASKS = [
   { id: "welcome", label: "Welcome" },
-  { id: "components", label: "Projects", group: ["components", "flowplan", "queuecare", "committeekeeper", "pulsemetrics", "qa"] },
+  { id: "components", label: "Projects", group: ["components", "zindex", "pulsemetrics", "committeekeeper", "queuecare", "flowplan", "qa"] },
   { id: "readme", label: "Read Me" },
   { id: "contact", label: "Contact" },
 ];
